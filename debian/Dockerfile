@@ -1,6 +1,7 @@
 FROM debian:stretch-slim
 
-LABEL maintainer=jordemort@github.com
+LABEL maintainer="Jordan Webb <jordemort@github.com>"
+LABEL LABEL org.label-schema.description="A slightly less slim debian:stretch-slim"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,3 +24,6 @@ RUN apt-get update && apt-get -y dist-upgrade && \
 ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
+
+ENTRYPOINT [ "/usr/bin/dumb-init" ]
+CMD [ "/bin/bash" ]
