@@ -1,6 +1,7 @@
 workflow "Build container" {
   resolves = [
     "Publish debian container",
+    "Docker login",
   ]
   on = "push"
 }
@@ -29,7 +30,7 @@ action "Build debian container" {
 action "Publish debian container" {
   uses = "actions/docker/cli@8cdf801b322af5f369e00d85e9cf3a7122f49108"
   needs = ["Build debian container", "Docker login"]
-  args = "push docker.pkg.github.com/jordemort/base-images/debian:latest"
+  args = "push docker.pkg.github.com/jordemort/base-images/debian:master"
 }
 
 action "Check if branch is master" {
