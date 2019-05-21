@@ -1,5 +1,7 @@
 FROM debian:stretch-slim
 
+LABEL maintainer=jordemort@github.com
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get -y dist-upgrade && \
